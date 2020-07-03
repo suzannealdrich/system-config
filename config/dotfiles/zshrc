@@ -1,90 +1,53 @@
+# zsh options
+setopt NO_CASE_GLOB
+setopt AUTO_CD
+# show substituted commands in the prompt
+setopt HIST_VERIFY
+# enable zsh correction
+setopt CORRECT
+setopt CORRECT_ALL
 
-export TERM="xterm-256color"
+# enable the default zsh completions
+autoload -Uz compinit && compinit
 
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='245'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
+# save command history
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+SAVEHIST=5000
+HISTSIZE=2000
+# share history across multiple zsh sessions
+setopt SHARE_HISTORY
+# append to history
+setopt APPEND_HISTORY
+# adds commands as they are typed, not at shell exit
+setopt INC_APPEND_HISTORY
+# expire duplicates first
+setopt HIST_EXPIRE_DUPS_FIRST 
+# do not store duplications
+setopt HIST_IGNORE_DUPS
+# ignore duplicates when searching
+setopt HIST_FIND_NO_DUPS
+# removes blank lines from history
+setopt HIST_REDUCE_BLANKS
 
-POWERLEVEL9K_OS_ICON_BACKGROUND="white"
-POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+# enable git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
 
-# load zgen
-ZGEN_PREZTO_LOAD_DEFAULT=0
-source "${HOME}/.zgen/zgen.zsh"
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
-# if the init scipt doesn't exist
-if ! zgen saved; then
-    echo "Creating a zgen save"
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
 
-    zgen prezto prompt theme 'sorin'
-    #zgen prezto tmux:auto-start local 'yes'
-    zgen prezto editor key-bindings 'vi'
-    zgen prezto utility:ls color 'yes'
-    zgen prezto '*:*' case-sensitive 'yes'
-    zgen prezto '*:*' color 'yes'
+# minimal aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ls='ls -GwF'
+alias ll='ls -alh'
 
-    zgen prezto
-    zgen prezto git
-    zgen prezto environment
-    zgen prezto terminal
-    zgen prezto editor
-    zgen prezto directory
-    zgen prezto spectrum
-    zgen prezto utility
-    zgen prezto prompt
-    zgen prezto archive
-    zgen prezto ruby
-    zgen prezto rails
+# VSCode aliases
+alias zshrc='code ~/.zshrc'
+alias gitconfig='code ~/.gitconfig'
 
-    zgen prezto command-not-found
-    #zgen prezto tmux
-    zgen prezto fasd
-    zgen prezto history-substring-search
-    zgen prezto syntax-highlighting
-
-    zgen load m42e/prezto_extras
-    zgen load bhilburn/powerlevel9k powerlevel9k
-    
-    zgen load caarlos0/zsh-git-sync
-    zgen load TBSliver/zsh-plugin-colored-man
-    zgen load mafredri/zsh-async
-    zgen load junegunn/fzf shell
-    
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load tarruda/zsh-autosuggestions
-
-    zgen save
-fi
-
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd newline-after-command
-
-function newline-after-command() { 
-  print ''
-}
-
-export FZF_COMPLETION_TRIGGER=''
-bindkey '^T' fzf-completion
-
-##################
-
-# Node
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-# Ruby
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Git / Github
-export GITHUB_USERNAME=kevinelliott
-alias git-prune="git branch --merged master | grep -v \"\* master\" | grep -v \" master\" | xargs -n 1 git branch -d"
-
-# Ngrok
-alias ngrok-workfit="ngrok http -subdomain=kevin-workfit-dev -host-header=workfit.test 80"
+eval "$(starship init zsh)"
