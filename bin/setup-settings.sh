@@ -19,24 +19,21 @@ mkdir ~/Desktop/Screenshots
 defaults write com.apple.screencapture location ~/Desktop/Screenshots
 
 
-# Setup Zgen
-git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-
-
 ## Github
-ssh-keygen -t rsa -C "kevin@`hostname -s`"
+ssh-keygen -t rsa -C "suzannealdrich@`hostname -s`"
 
 # Copy public key to Github.com
 # cat ~/.ssh/id_rsa.pub
 
 # Test connection
-ssh -T git@github.com
+# ssh -T git@github.com
 
 # Git global config
-git config --global user.name "Kevin Elliott"
-git config --global user.email "kevin@welikeinc.com"
-git config --global github.user kevinelliott
+git config --global user.name "Suzanne Aldrich"
+git config --global user.email "suzanne@sjaconsulting.com"
+git config --global github.user suzannealdrich
 # git config --global github.token your_token_here
-
+git config --global user.signingkey 3747228BE9CC066E
+git config --global commit.gpgsign true
 git config --global core.editor "code -w"
 git config --global color.ui true
