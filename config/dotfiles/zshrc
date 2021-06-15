@@ -4,8 +4,8 @@ setopt AUTO_CD
 # show substituted commands in the prompt
 setopt HIST_VERIFY
 # enable zsh correction
-setopt CORRECT
-setopt CORRECT_ALL
+# setopt CORRECT
+# setopt CORRECT_ALL
 
 # enable the default zsh completions
 autoload -Uz compinit && compinit
@@ -28,6 +28,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
+
+export GPG_TTY=$(tty)
 
 # enable git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash

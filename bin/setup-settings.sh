@@ -37,3 +37,4 @@ git config --global user.signingkey 3747228BE9CC066E
 git config --global commit.gpgsign true
 git config --global core.editor "code -w"
 git config --global color.ui true
+git config --global core.excludesfile ~/.gitignore_global
