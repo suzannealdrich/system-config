@@ -52,4 +52,9 @@ alias ll='ls -alh'
 alias zshrc='code ~/.zshrc'
 alias gitconfig='code ~/.gitconfig'
 
+# add Google Cloud SDK command line tools to $PATH
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
 eval "$(starship init zsh)"
+test -e /Users/suzannealdrich/.iterm2_shell_integration.zsh && source /Users/suzannealdrich/.iterm2_shell_integration.zsh || true

@@ -38,3 +38,4 @@ git config --global commit.gpgsign true
 git config --global core.editor "code -w"
 git config --global color.ui true
 git config --global core.excludesfile ~/.gitignore_global
+git config --global init.defaultBranch main
