@@ -56,5 +56,7 @@ alias gitconfig='code ~/.gitconfig'
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
+export PATH="/usr/local/sbin:$PATH"
+
 eval "$(starship init zsh)"
 test -e /Users/suzannealdrich/.iterm2_shell_integration.zsh && source /Users/suzannealdrich/.iterm2_shell_integration.zsh || true
