@@ -28,6 +28,11 @@ ssh-keygen -t rsa -C "suzannealdrich@`hostname -s`"
 # Test connection
 # ssh -T git@github.com
 
+# Configure SSH for 1Password Agent
+# mkdir ~/.ssh/
+# touch ~/.ssh/config
+# echo -e "Host * \n\tIdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\n" >> ~/.ssh/config
+
 # Git global config
 git config --global user.name "Suzanne Aldrich"
 git config --global user.email "suzanne@sjaconsulting.com"
