@@ -1,6 +1,8 @@
 # Configuration file for the Starship prompt
 # See: https://starship.rs/config/
 
+command_timeout = 60_000
+
 [battery]
 full_symbol = "🔋"
 charging_symbol = "🔌"
