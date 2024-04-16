@@ -46,7 +46,6 @@ cask "gpg-suite"
 cask "iterm2"
 cask "keybase"
 cask "keymapp"
-cask "kindle"
 cask "malwarebytes"
 cask "minecraft"
 cask "notion"
@@ -59,18 +58,18 @@ cask "visual-studio-code"
 cask "whatsapp"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
+mas "Copilot", id: 1447330651
+mas "Home Assistant", id: 1099568401
+mas "iMovie", id: 408981434
+mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
-mas "Kindle", id: 405399194
+mas "Kindle", id: 302584613
+mas "Night Sky", id: 475772902
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Paprika Recipe Manager 3", id: 1303222628
 mas "TestFlight", id: 899247664
 mas "Xcode", id: 497799835
-mas "Copilot", id: 1447330651
-mas "iMovie", id: 408981434
-mas "Paprika Recipe Manager 3", id: 1303222628
-mas "Home Assistant", id: 1099568401
-mas "Ivory", id: 6444602274
-mas "Night Sky", id: 475772902
 vscode "1password.op-vscode"
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "bradlc.vscode-tailwindcss"
